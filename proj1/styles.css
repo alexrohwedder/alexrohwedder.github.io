@@ -1,0 +1,194 @@
+html {
+    font-family: "Georgia";
+    background-color: #fdf3e2;
+}
+
+html#pg0 {
+    background: url("bg0.jpg");
+}
+
+html#pg1 {
+    background: url("bg1.jpg");
+}
+
+html#pg2 {
+    background: url("bg2.jpg");
+}
+
+
+.navbar {
+    display: flex;
+    flex-direction: column;
+    background-color: #3D3B36;
+    color: #BDB5A8;
+    text-decoration: none;
+    height: 40px;
+    margin: 12px;
+    border-radius: 4px;
+}
+
+.navbar a {
+    color: #BDB5A8;
+    margin: 10px;
+    text-align: center;
+    text-justify: auto;
+}
+
+a:hover {
+    color: #E1EEFC;
+}
+
+.page-links {
+    display: flex;
+    justify-content: space-around;
+    height: 250px;
+}
+
+.page-link {
+}
+
+.page-link img {
+    border-radius: 10px;
+    height: 220px;
+    margin: 20px;
+    /*border: 2px solid #7994B0;*/
+}
+
+.page-link img.selected-image {
+    opacity: 0.6;
+}
+
+.page-link img.selected-image:hover {
+    opacity: 1;
+}
+
+.page-link img:hover {
+    opacity: 0.6;
+}
+
+.title-card {
+    visibility: hidden;
+    z-index: 5;
+    text-align: center;
+    position: relative;
+    top: -100px;
+    color: #FFFEFC;
+    text-decoration: none;
+
+}
+
+.title-card#selected {
+    visibility: visible;
+    text-decoration: none;
+}
+
+.page-link img:hover + .title-card {
+    visibility: visible;
+}
+
+.page-link .title-card:hover {
+    visibility: visible;
+}
+
+.main {
+    /*display: flex;
+    flex-wrap: wrap;
+     */
+}
+.main div.b-text {
+    float: left;
+    border-radius: 20px;
+    background-color: #3D3B36;
+    color: #FDF3E2;
+    margin: 10px;
+    width: 60%;
+    min-width: 400px;
+}
+
+div.b-text h1 {
+    margin: 10px;
+    color: #B0A28B;
+    text-align: center;
+}
+
+div.b-text p {
+    margin: 10px;
+}
+
+.main div.table-div {
+    float: right;
+    margin: 10px;
+    border-radius: 20px;
+    background-color: #3D3B36;
+    color: #FDF3E2;
+    width: 400px;
+    /*width: 45%;*/
+    text-align: center;
+}
+
+div h1 {
+    color: #B0A28B;
+    margin: 10px;
+    text-align: center;
+}
+
+.main div.table-div table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.main div.table-div a {
+    color: #FDF3E2;
+}
+
+.main table td {
+    margin: 2px;
+    padding: 2px;
+}
+
+#float-me-right {
+    float: right;
+}
+
+.main div.list-div {
+    float: left;
+    margin: 10px;
+    border-radius: 20px;
+    background-color: #3D3B36;
+    color: #FDF3E2;
+    width: 555px;
+}
+
+li {
+    margin: 2px;
+}
+
+.b-text img#ad1-lead {
+    float: left;
+    width: 500px;
+    margin: 10px;
+}
+
+div#book-one img {
+    float: left;
+    width: 400px;
+    margin: 10px;
+}
+
+.main div#book-two img{
+    margin: auto;
+}
+
+.main div#book-two {
+    float: right;
+}
+
+.main div#book-three img {
+    margin: auto;
+}
+
+.flex-me {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px;
+}
