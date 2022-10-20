@@ -1,0 +1,262 @@
+/* arohwedder22@georgefox.edu */
+/* Assignment #2 */
+/* 2022/10/22 */
+
+
+
+/* NOTE: MDN and zyBooks USED FOR EXAMPLES AND DOCUMENTATION */
+
+@font-face {
+	font-family: "Montserrat";
+	src: url("Montserrat/Montserrat-VariableFont_wght.ttf") format('truetype');
+}
+
+/* :root { */
+/*     --bg-main: #6B6B9D; */
+/*     --bg-light: #A0A0EB; */
+/*     --bg-dark: #40405E; */
+/*     --bg-med-dark: #49496B; */
+/*     --text-main: #F8F8FF; */
+/*     --text-header: #C6C6CC; */
+/*     --accent-light: #AB9C85; */
+/*     --accent-dark: #5E5545; */
+/*     --replace-black: #1A1A26; */
+/* } */
+
+/* :root { */
+/*     --bg-main: #F4C430; */
+/*     --bg-light: #F7D87B; */
+/*     --bg-med-dark: #c29B27; */
+/*     --bg-dark: #75673B; */
+/*     --text-main: #362B0B; */
+/*     --text-header:  white; 7025F5; 755E17; */
+/*     --accent-light: #7025F5; */
+/*     --accent-dark: #4711A8; */
+/*     --replace-black: #362B0B; */
+/* } */
+
+:root {
+    --bg-main: #E4DBD9;
+    --bg-main-alpha: rgba(228, 219, 217, .9);
+    --bg-light: #E6CD9E; F2DFBD; d9c196;
+    --bg-med-dark: #8c5535;
+    --bg-med-dark-alpha: rgba(140, 85, 53, 1);
+    --bg-dark: #4F3A23;
+    --text-main: #4F3A23;
+    --text-header:  #034AA6; 7025F5; 755E17;
+    --accent-light: #034AA6; 7025F5;
+    --accent-dark: #4711A8;
+    --replace-black: #362B0B;
+    --replace-white: #D9C196;
+}
+
+
+/* GLOBAL */
+
+body{
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    font-family: "Georgia";
+    color: var(--text-main);
+    background-color: var(--bg-main);
+}
+
+p {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 10px 50px, 10px;
+}
+
+a:link {
+    color: var(--accent-light);
+}
+
+abbr {
+    text-decoration: none;
+}
+
+h1, h2, h3 {
+    color: var(--text-header);
+}
+
+/* HEADER AND INTRO AREAS: */
+
+.page-wrapper {
+    display: grid;
+    grid-template-areas:
+        "header header header"
+        "body body aside"
+        "body body aside"
+        "body body aside"
+    ;
+    grid-template-columns: 1fr 1fr 1fr ;
+    margin: 0;
+    padding: 0;
+    background-image: repeating-linear-gradient(
+    -30deg,
+    var(--bg-med-dark-alpha),
+    var(--bg-med-dark-alpha) 80px,
+    var(--bg-main) 80px,
+    var(--bg-main) 160px
+    );
+}
+
+.intro {
+    display: grid;
+    grid-area: header;
+    grid-template-areas:
+        "banner banner"
+        "summary preamble"
+    ;
+    grid-template-columns: 1fr 2fr;
+    margin: 0;
+    padding: 0;
+}
+
+.intro p {
+    text-align: center;
+}
+
+
+header {
+    display: flex;
+}
+
+header h1 {
+    color: var(--bg-main);
+    font-family: "Montserrat";
+    margin: 0px;
+    padding: 20px;
+    /* width: 300px; */
+    width: 14.6%;
+    background-color: var(--bg-dark);
+}
+
+header h2 {
+    color: var(--bg-light);
+    font-family: "Montserrat";
+    margin: 0px;
+    padding: 20px;
+    /* width: 485px; */
+    width: 23.6%;
+    background-color: var(--bg-med-dark);
+}
+
+[role="banner"] {
+    grid-area: banner;
+    background-image: repeating-linear-gradient(
+    30deg,
+    var(--accent-light),
+    var(--accent-light) 80px,
+    var(--bg-main) 80px,
+    var(--bg-main) 160px
+    );
+}
+
+.summary, .preamble {
+    background-color: var(--bg-light);
+}
+
+.summary {
+    padding: 20px;
+    grid-area: summary;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.preamble {
+    grid: preamble;
+}
+
+.preamble h3 {
+    text-align: center;
+    font-family: "Montserrat";
+    font-size: 24px;
+    margin: 10px;
+}
+
+/* ASIDE */
+
+.wrapper {
+    grid-area: aside;
+    background-color: var(--bg-light);
+    padding: 20px;
+    margin: 40px;
+}
+
+.wrapper h3 {
+    font-family: "Montserrat";
+    background-color: var(--bg-dark);
+    color: var(--bg-main);
+    position: relative;
+    transform: rotate(-20deg);
+    top: 8px;
+    left: -40px;
+    padding: 4px;
+    width: 180px;
+    text-align: center;
+}
+
+.sidebar ul {
+    margin-bottom: 60px;
+}
+
+/* BODY */
+
+#zen-supporting {
+    display: grid;
+    grid-area: body;
+    grid-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+        "what-is partici partici"
+        "benefit benefit benefit"
+        "require require require"
+        ". footer .";
+    margin: 12px;
+    padding: 8px;
+    background-color: var(--bg-main-alpha);
+}
+
+#zen-supporting h3 {
+    font-family: "Montserrat";
+    font-size: 24px;
+    text-align: center;
+    margin-top: 18px;
+    margin-bottom: 2px;
+}
+
+#zen-supporting p {
+    margin: 2px;
+    padding: 20px;
+}
+
+.explanation {
+    grid-area: what-is;
+}
+
+.participation {
+    grid-area: partici;
+}
+
+.benefits {
+    grid-area: benefit;
+    text-align: center;
+}
+
+.requirements {
+    grid-area: require;
+}
+
+footer {
+    grid-area: footer;
+    text-align: center;
+    padding: 10px;
+    background-color: var(--bg-dark);
+}
+
+footer a:link {
+    color: var(--bg-main)
+}
