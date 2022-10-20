@@ -91,7 +91,7 @@ h1, h2, h3 {
     margin: 0;
     padding: 0;
     background-image: repeating-linear-gradient(
-    -30deg,
+    -45deg,
     var(--bg-med-dark-alpha),
     var(--bg-med-dark-alpha) 80px,
     var(--bg-main) 80px,
@@ -143,7 +143,7 @@ header h2 {
 [role="banner"] {
     grid-area: banner;
     background-image: repeating-linear-gradient(
-    30deg,
+    45deg,
     var(--accent-light),
     var(--accent-light) 80px,
     var(--bg-main) 80px,
