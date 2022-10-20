@@ -2,8 +2,6 @@
 /* Assignment #2 */
 /* 2022/10/22 */
 
-
-
 /* NOTE: MDN and zyBooks USED FOR EXAMPLES AND DOCUMENTATION */
 
 @font-face {
@@ -38,13 +36,13 @@
 :root {
     --bg-main: #E4DBD9;
     --bg-main-alpha: rgba(228, 219, 217, .9);
-    --bg-light: #E6CD9E; F2DFBD; d9c196;
+    --bg-light: #E6CD9E;
     --bg-med-dark: #8c5535;
     --bg-med-dark-alpha: rgba(140, 85, 53, 1);
     --bg-dark: #4F3A23;
     --text-main: #4F3A23;
-    --text-header:  #034AA6; 7025F5; 755E17;
-    --accent-light: #034AA6; 7025F5;
+    --text-header:  #034AA6;
+    --accent-light: #034AA6;
     --accent-dark: #4711A8;
     --replace-black: #362B0B;
     --replace-white: #D9C196;
@@ -65,7 +63,7 @@ body{
 p {
     margin-left: 10px;
     margin-right: 10px;
-    padding: 10px 50px, 10px;
+    padding: 10px 50px 10px;
 }
 
 a:link {
@@ -168,7 +166,7 @@ header h2 {
 }
 
 .preamble {
-    grid: preamble;
+    grid-area: preamble;
 }
 
 .preamble h3 {
@@ -209,7 +207,7 @@ header h2 {
 #zen-supporting {
     display: grid;
     grid-area: body;
-    grid-columns: 1fr 1fr 1fr;
+    grid-column: 1fr 1fr 1fr;
     grid-template-areas:
         "what-is partici partici"
         "benefit benefit benefit"
