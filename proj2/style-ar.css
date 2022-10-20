@@ -207,7 +207,7 @@ header h2 {
 #zen-supporting {
     display: grid;
     grid-area: body;
-    grid-column: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas:
         "what-is partici partici"
         "benefit benefit benefit"
