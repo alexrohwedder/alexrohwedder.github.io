@@ -38,7 +38,7 @@
     --bg-main-alpha: rgba(228, 219, 217, .96);
     --bg-light: #E6CD9E;
     --bg-med-dark: #8c5535;
-    --bg-med-dark-alpha: rgba(140, 85, 53, 1);
+    --bg-med-dark-alpha: rgba(140, 85, 53, .75);
     --bg-dark: #4F3A23;
     --text-main: #4F3A23;
     --text-header:  #034AA6;
