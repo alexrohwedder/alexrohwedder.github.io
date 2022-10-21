@@ -2,7 +2,7 @@
 /* Assignment #2 */
 /* 2022/10/22 */
 
-/* NOTE: MDN and zyBooks USED FOR EXAMPLES AND DOCUMENTATION */
+/* NOTE: MDN AND ZYBOOKS USED FOR EXAMPLES AND DOCUMENTATION */
 
 @font-face {
 	font-family: "Montserrat";
@@ -35,7 +35,7 @@
 
 :root {
     --bg-main: #E4DBD9;
-    --bg-main-alpha: rgba(228, 219, 217, .9);
+    --bg-main-alpha: rgba(228, 219, 217, .96);
     --bg-light: #E6CD9E;
     --bg-med-dark: #8c5535;
     --bg-med-dark-alpha: rgba(140, 85, 53, 1);
