@@ -1,0 +1,79 @@
+
+:root {
+    --bg-main: #F2e5d5;
+    --bg-light: #d99379;
+    --bg-med: #8c8070;
+    --bg-dark: #594e3f;
+    --bg-dark-alt: #8c311c;
+    --text-main: #594e3f;
+    --replace-black: #201d1d;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    font-family:'Courier New', Courier, monospace ;
+    margin: 0;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    min-height: 99%;
+    background-color: var(--replace-black);
+}
+
+a {
+    color: var(--bg-light);
+}
+
+h1 {
+    color: var(--bg-med);
+}
+
+.navigation {
+    background-color: var(--replace-black);
+    grid-area: navigate;
+    padding: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+.title-block {
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 16pt;
+    color: var(--replace-black);
+    background-color: var(--bg-dark-alt);
+    border: none;
+    margin: 6px;
+    width: 100px;
+    /* padding: 10px; */
+    border-radius: 10px;
+}
+
+button:hover {
+    background-color: var(--bg-light);
+}
+
+div {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+div#title {
+    justify-content: space-evenly;
+}
+
+canvas {
+    background-color: var(--bg-main);
+}
