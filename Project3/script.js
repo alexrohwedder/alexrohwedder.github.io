@@ -20,7 +20,7 @@ function initialLoadHandler() {
   cfResetButton.addEventListener("click", cfResetButtonHandler);
 }
 
-alert('Not done with this page. Try the animation link at the top of the page.')
+alert('Not done with this page. Try the animation link at the top of the page to see the finished portion.')
 
 function runButtonHandler() {
   let bondNumbers = Object.getOwnPropertyNames(BONDS); 
