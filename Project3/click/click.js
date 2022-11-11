@@ -76,10 +76,10 @@ function eraseButtonHandler() {
     const eraseButton = document.getElementById("erase-button");
     if (!ERASE) {
         ERASE = true;
-        eraseButton.style.backgroundColor = COLOR1;
+        eraseButton.style.backgroundColor = COLOR3;
     } else {
         ERASE = false;
-        eraseButton.style.backgroundColor = COLOR3;
+        eraseButton.style.backgroundColor = COLOR1;
     }
 }
 
