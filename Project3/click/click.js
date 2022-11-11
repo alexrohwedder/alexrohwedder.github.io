@@ -149,25 +149,23 @@ function drawCircles(x, y, r, t) {
             context.arc(x, y, r + offSet * 2, 0, Math.PI * 2);
             context.stroke();
         };
-        setTimeout(
-            function () {
-                if (ERASE) {
-                    context.strokeStyle = BGCOLOR;
-                    context.lineWidth = 3;
+        setTimeout(function () {
+            if (ERASE) {
+                context.strokeStyle = BGCOLOR;
+                context.lineWidth = 3;
+                context.beginPath();
+                context.arc(x, y, r, 0, Math.PI * 2);
+                context.stroke();
+                if (TOGGLE) {
                     context.beginPath();
-                    context.arc(x, y, r, 0, Math.PI * 2);
+                    context.arc(x, y, r + offSet, 0, Math.PI * 2);
                     context.stroke();
-                    if (TOGGLE) {
-                        context.beginPath();
-                        context.arc(x, y, r + offSet, 0, Math.PI * 2);
-                        context.stroke();
-                        context.beginPath();
-                        context.arc(x, y, r + + offSet * 2, 0, Math.PI * 2);
-                        context.stroke();
-                    };
-                }
-            }, 
-        (t / 2 + 400));
+                    context.beginPath();
+                    context.arc(x, y, r + + offSet * 2, 0, Math.PI * 2);
+                    context.stroke();
+                };
+            }
+        }, (t / 2 + 400));
     }, t);
 }
 
