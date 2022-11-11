@@ -7,10 +7,10 @@ window.addEventListener("DOMContentLoaded", initialLoadHandler);
 
 function initialLoadHandler() {
 
-  let runButton = document.getElementById('run-button');
+  const runButton = document.getElementById('run-button');
   runButton.addEventListener("click", runButtonHandler);
 
-  let resetButton = document.getElementById('reset-button');
+  const resetButton = document.getElementById('reset-button');
   resetButton.addEventListener("click", resetButtonHandler);
 
   const addButton = document.getElementById('add-cf-button');
@@ -18,17 +18,17 @@ function initialLoadHandler() {
 
   const cfResetButton = document.getElementById('reset-cf-button');
   cfResetButton.addEventListener("click", cfResetButtonHandler);
+
+  const cfRandomButton = document.getElementById('random-cf-button');
+  cfRandomButton.addEventListener("click", randomButtonHandler); 
 }
 
-alert('Not done with this page. Try the animation link at the top of the page to see the finished portion.')
-
 function runButtonHandler() {
-  let bondNumbers = Object.getOwnPropertyNames(BONDS); 
   // NEED TO ADD CATCH FOR EMPTY DATA
-  let dataArray = createDataArray()
-  console.log(dataArray)
-  fromGoogleDrawChart(dataArray,'1','2')
-  console.log(newtonRaphsonMethod(calcNPV, sumCF(dataArray)))
+  if (BONDCOUNTER > 1) {
+    let dataArray = createDataArray();
+    fromGoogleDrawChart(dataArray,'1','2');
+  }
 }
 
 function resetButtonHandler() {
@@ -36,6 +36,36 @@ function resetButtonHandler() {
     deleteButtonHandler(bond);
   }
   BONDCOUNTER = 1;
+}
+
+
+function randomButtonHandler() {
+  cfResetButtonHandler();
+
+  document.getElementById("price-0").value = getRandomInt(2000, 0);
+  document.getElementById("face-0").value = getRandomInt(2000, 0);
+  document.getElementById("coupon-0").value = (Math.random() * 20).toFixed(2);
+  document.getElementById("length-0").value = getRandomInt(20, 1);
+  if ((Math.random() > 0.5)) {
+    document.getElementById("bid-0").checked = true;
+    document.getElementById("offer-0").checked = false;
+  } else {
+    document.getElementById("bid-0").checked = false;
+    document.getElementById("offer-0").checked = true;
+  };
+
+}
+
+function deleteButtonHandler(idNo) {
+  let toDelete = document.getElementById('cf-' + idNo);
+  if (toDelete != null) {
+    toDelete.parentNode.removeChild(toDelete);
+    delete BONDS[idNo];
+  };
+}
+
+function cfResetButtonHandler() {
+  clearBondDef();
 }
 
 function addButtonHandler() {
@@ -89,16 +119,7 @@ function validateInput(add) {
   return correctEntry;
 }
 
-function deleteButtonHandler(idNo) {
-  let toDelete = document.getElementById('cf-' + idNo);
-  if (toDelete != null) {
-    toDelete.parentNode.removeChild(toDelete);
-    delete BONDS[idNo]
-  };
-}
-
 function addBond(toAdd) {
-  
   // Need to do a sign change if bid/offer
   if (toAdd.bid) {
     // Buying
@@ -120,7 +141,7 @@ function addBond(toAdd) {
   }
 
   let addHTML = document.createElement("div");
-  addHTML.className = "cashflow" 
+  addHTML.className = "cashflow";
   addHTML.id = "cf-" + BONDCOUNTER;
   addHTML.innerHTML = `
     <div class="div-cf-title">
@@ -130,29 +151,23 @@ function addBond(toAdd) {
     <div class="div-cf-data">
       <p>${typeOfBond}</p>
       <p id="price-${BONDCOUNTER}">Price: \$${toAdd.price}</p>
-      <p>Coupon: ${toAdd.coupon * 100}%</p>
+      <p>Coupon: ${(toAdd.coupon * 100).toFixed(2)}%</p>
       <p>Face value: \$${toAdd.face}</p>
       <p>Maturity: ${toAdd.maturity} year(s)</p>
     </div>`;
 
   // add to DOM
   BONDCOUNTER++;
-  let cashflowHolder = document.getElementById("cashflow-holder")
-  cashflowHolder.appendChild(addHTML)
+  let cashflowHolder = document.getElementById("cashflow-holder");
+  cashflowHolder.appendChild(addHTML);
 
   // Clear form
-  clearBondDef()
-}
-
-
-function cfResetButtonHandler() {
-  clearBondDef()
+  clearBondDef();
 }
 
 function addBondToObject(add) {
   BONDS[BONDCOUNTER] = add
 }
-
 
 function clearBondDef() {
   document.getElementById("price-0").value = '';
@@ -162,21 +177,19 @@ function clearBondDef() {
   document.getElementById("bid-0").checked = true;
 }
 
-
+// Creates the table of data formatted for google charts
 function createDataArray() {
   let dataArray = [];
   let keys = Object.getOwnPropertyNames(BONDS);
   dataArray.push(keys)
 
-
   timeline = makeTimeArray();
 
-  
   for (let period of timeline) {
-    let arrPeriod = [period]
+    let arrPeriod = [period];
     for (let key of keys) {
       let bond = BONDS[key];
-      let addedMoneyThisPeriodForThisBond = 0
+      let addedMoneyThisPeriodForThisBond = 0;
       
       // If zero period, add price
       if (period == 0) {
@@ -185,9 +198,9 @@ function createDataArray() {
 
       // If bond is matured, add face value
       if (period == bond.maturity) {
-        addedMoneyThisPeriodForThisBond += bond.face
+        addedMoneyThisPeriodForThisBond += bond.face;
       } else {
-        addedMoneyThisPeriodForThisBond += 0
+        addedMoneyThisPeriodForThisBond += 0;
       }
 
       // if bond is in payout range, add coupon
@@ -203,8 +216,6 @@ function createDataArray() {
   return dataArray; 
 
 }
-
-
 
 function sumCF(dataArray) {
   let cfArray = [];
@@ -229,7 +240,6 @@ function discountArray(n, r) {
   return arrDiscount;
 }
 
-
 function calcNPV(arrBond, r) {
   let sum = 0;
   let arrDisc = discountArray(arrBond.length, r);
@@ -239,60 +249,16 @@ function calcNPV(arrBond, r) {
   return sum;
 }
 
-function newtonRaphsonMethod(foo, arrBond) {
-  // initial guess
-  const maxAttempts = 1000;
-  const primeAdjust = .00001;
-  const epsilon = 0.0009;
-  const r0 = .08;
-
-  let bestGuess = [r0, foo(arrBond, r0)];
-  
-  for (let trial = 0; trial < maxAttempts; trial++) {
-    let fooPrime = (foo(arrBond, r0 + primeAdjust) - foo(arrBond, r0 - primeAdjust));
-    fooPrime /= (2 * primeAdjust);
-
-    let newGuess = bestGuess[0] - (bestGuess[1] / fooPrime)
-    // console.log(`newGuess: ${newGuess}, bestGuess: ${bestGuess}`)
-    if (foo(addBond, newGuess) < epsilon) {
-      return convertSemiAnnualToEAR(newGuess);
-    } else {
-      bestGuess[0] = newGuess;
-      bestGuess[1] = foo(arrBond, newGuess)
-    }
-  }
-  return convertSemiAnnualToEAR(bestGuess[0]);
-}
-
-function convertSemiAnnualToEAR(semiRate) {
-  return (semiRate + 1) ** 2 - 1;
-}
-
-/* Debug */
-
-// let arrBond = [
-//   -985, 30, 30, 30, 30, 30, 30, 30, 1030
-// ];
-
-// console.log(
-//   newtonRaphsonMethod(calcNPV, arrBond) // ~ 0.06534668
-// );
-
-
-
 function makeTimeArray() {
   // Returns an array with the semi-annual strings notation
   // 2 years -> [0.0, 0.5, 1.0, 1.5, 2.0]
-  
   length = getLongestMaturity();
   arrTimeline = [];
   for (let i = 0; i <= length; i += 0.5) {
     arrTimeline.push(i.toFixed(1).toString());
   }
   return arrTimeline;
-
 }
-
 
 function getLongestMaturity() {
   let max = 0;
@@ -301,12 +267,67 @@ function getLongestMaturity() {
       max = BONDS[bond].maturity;
     }
   }
-  return max
+  return max;
 }
 
+/*
+  The folowing section caluculates the IRR.
+  It's totally broken for some situations.
+  I may fix it later.
+*/
+
+// // https://en.wikipedia.org/wiki/Newton's_method
+// function newtonRaphsonMethod(foo, arrBond) {
+//   const maxAttempts = 10000;
+//   const primeAdjust = .00001;
+//   const epsilon = 1;
+//   const r0 = .10;
+
+//   let bestGuess = [r0, foo(arrBond, r0)];
+  
+//   for (var trial = 0; trial < maxAttempts; trial++) {
+//     let fooPrime = (foo(arrBond, r0 + primeAdjust) - foo(arrBond, r0 - primeAdjust));
+//     fooPrime /= (2 * primeAdjust);
+
+//     let newGuess = bestGuess[0] - (bestGuess[1] / fooPrime)
+//     // console.log(`newGuess: ${newGuess}, bestGuess: ${bestGuess}`)
+//     if (foo(addBond, newGuess) < epsilon) {
+//       return convertSemiAnnualToEAR(newGuess);
+//     } else {
+//       bestGuess[0] = newGuess;
+//       bestGuess[1] = foo(arrBond, newGuess)
+//     }
+//   }
+//   console.log('best ' + bestGuess[0] + ' ' + trial + ' ' + bestGuess[1])
+//   console.log(`help me ${arrBond}`)
+//   return convertSemiAnnualToEAR(bestGuess[0]);
+// }
+
+// function convertSemiAnnualToEAR(semiRate) {
+//   let factor = 1;
+//     if (semiRate < 0) {
+//       factor = -1;
+//     }
+//     return factor * ((semiRate + 1) ** 2 - 1);
+// }
+
+// function addResultInfo(dataArray) {
+
+//   let addHTML = document.createElement("span");
+//   // addHTML.className = "results" 
+//   // addHTML.id = "cf-" + BONDCOUNTER;
+//   addHTML.innerHTML = `<p>Rate of return: ${newtonRaphsonMethod(calcNPV, sumCF(dataArray))}</p>`; 
+//   let resDiv = document.getElementById('results-div');
+//   resDiv.appendChild(addHTML); 
+// }
 
 
-// This function is from google charts, I did not write this.
+// This function is adapted from MDN
+function getRandomInt(max, min) {
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
+// This function is from google charts
 function fromGoogleDrawChart(arrChartData, chartTitle, chartSubTitle) {
   google.charts.load('current', {'packages':['bar']});
   google.charts.setOnLoadCallback(drawChart);
@@ -316,12 +337,15 @@ function fromGoogleDrawChart(arrChartData, chartTitle, chartSubTitle) {
     var options = {
       isStacked: true,
       height: 500,
-      chart: {
-      title: chartTitle,
-      subtitle: chartSubTitle,
-        }
+      chartAreabackgroundColor: 'red',
+      backgroundColor: '#F2E5D5',
+      chartArea: {backgroundColor: '#F2E5D5'},
+      // chart: {
+      // title: chartTitle,
+      // subtitle: chartSubTitle,
+      //   }
       };
-
+      
     var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
     chart.draw(data, google.charts.Bar.convertOptions(options));
     }

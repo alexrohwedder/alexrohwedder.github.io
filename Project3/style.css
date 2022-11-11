@@ -125,8 +125,6 @@ button.control-button-sim {
 
 /* Control Area */
 
-
-
 .run-reset {
     grid-area: run-reset;
     display: flex;
@@ -143,10 +141,6 @@ button.control-button-sim {
 .sim-title {
     grid-area: sim-title;
 }
-
-
-
-
 
 .data-wrapper {
     display: grid;
@@ -174,12 +168,11 @@ button.control-button-sim {
 .bond-definition {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(7, 1fr);
+    grid-template-rows: repeat(5, 1fr);
     grid-gap: 3px;
     align-content: space-between;
     text-align: right;
     vertical-align: middle;
-    
 }
 
 .bond-definition p {
@@ -193,8 +186,13 @@ button.control-button-sim {
     text-align: right;
 }
 
-.bond-definition button {
-    font-size: 20px;
+.bond-def-buttons {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.bond-def-buttons button {
+    font-size: 40px;
 }
 
 .cashflow {
@@ -225,11 +223,9 @@ button.control-button-sim {
     
 }     
 
-
 .cashflow button {
     font-size: 20px;
     margin: auto;
-    
 }
 
 .graph-holder {
@@ -240,4 +236,9 @@ button.control-button-sim {
 #columnchart_material {
     margin: 20px;
     padding: 20px;
+}
+
+#results-div {
+    background-color: var(--bg-light);
+    color: var(--replace-black);
 }
