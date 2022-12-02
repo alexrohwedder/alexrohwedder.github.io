@@ -1,0 +1,189 @@
+:root {
+    --main-bg: #732634;
+    --med-bg: #D9A282;
+    --accent: #D93b58;
+    --accent-lt: #D99CA1;
+    --white: #EAEAEA;
+    --gray: #ABABAB;
+    --black: #010d00;
+}
+
+body {
+    background-color: var(--main-bg);
+    color: var(--white);
+    font-family: Arial;
+}
+
+a {
+    color: var(--med-bg);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+    font-family: Georgia;
+}
+
+p {
+    text-align: center;
+}
+
+div.nav{
+    background-color: var(--black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    border-radius: 20px; 
+    margin: 10px;
+}
+
+button {
+    background-color: var(--white);
+    border-radius: 4px;
+}
+
+div#cover {
+    background-color: var(--main-bg);
+    color: var(--white);
+    margin: 10px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+div#pw-alert {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+div#api-block {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+}
+
+div#cover img {
+    width: 400px;
+    margin: 10px;
+}
+
+div#wrapper {
+    display: none;
+    grid-template-columns: 1fr 2fr;
+    justify-items: center;
+}
+
+a#refresh-page {
+    display: none;
+}
+
+div#definitions {
+    display: flex;
+}
+
+.control-button {
+    background-color: var(--accent);
+    height: 80px;
+    width: 80px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 40px;
+    font-size: 16px;
+    font-variant: small-caps;
+}
+
+.control-button:hover {
+    background-color: var(--white);
+    color: var(--black);
+}
+
+div#stock-picker {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--gray);
+    color: var(--black);
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+
+    margin: 10px;
+    padding: 40px;
+    width: 150px;
+}
+
+div#stock-picker input {
+    background-color: var(--white);
+    margin: 10px;
+    text-align: center;
+}
+
+div.portfolio-def {
+    display: none;
+    flex-direction: column;
+    background-color: var(--black);
+    color: var(--white);
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+
+    margin: 10px;
+    padding: 10px;
+    width: 300px;
+}
+
+div.portfolio-def button{
+    background-color: var(--accent);
+}
+
+div.div-range {
+    display: none;
+    grid-template-columns: 50px 150px 50px;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+div.div-range input {
+    width: 125px;
+    margin: 10px;
+}
+
+
+div#info {
+    display: flex;
+    flex-direction: column;
+    width: 100% 
+}
+
+div#instructions {
+    background-color: var(--black);
+    margin: 10px;
+    margin-bottom: 0;
+    border-radius: 20px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+div#results {
+    background-color: var(--gray);
+    color: var(--black);
+    margin: 10px;
+    margin-top: 0;
+    display: none;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 20px;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+}
+
+div#results a {
+    color: var(--main-bg);
+}

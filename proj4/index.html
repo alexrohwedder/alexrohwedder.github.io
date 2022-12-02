@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Portfolio</title>
+        <script type="text/javascript" src="classes.js"></script>
+        <script type="text/javascript" src="recStocks.js"></script>
+        <script type="text/javascript" src="script.js"></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="nav">
+            <button id="change-api">Change API Key</button>
+            &ThickSpace;|&ThickSpace;<a href="../index.html">Landing Page</a>
+            &ThickSpace;|&ThickSpace;<a id="refresh-page" href="">Start a New Search</a>
+        </div> 
+        <div id="cover">
+            <div id="api-alert">
+                <img src="bear_color.png" alt="GFU Mascot">
+                <div>
+                    <label for="api">Enter an <a href="https://www.alphavantage.co/support/#api-key" target="_blank">AlphaVantage</a> API key or leave blank:</label>
+                </div>
+            </div>
+            <div id="api-block">
+                <input type="text" name="password" id="api">
+                <button id="api-button">Submit</button>
+            </div>
+        </div>
+
+        <div id="wrapper">
+            <div id="definitions">
+                <div id="stock-picker">
+                    <h3>Select up to five stocks</h3>
+                    <p>The list contains the top 100 S&P 500 companies by market capitalization.</p>
+                    <p>You can type a ticker that's not in the list.</p>
+                    <p>Press 'Pull' with blank boxes to use the saved offline data.</p>
+                    <input class="ticker-box" id="stock0" list="sp-500">
+                    <input class="ticker-box" id="stock1" list="sp-500">
+                    <input class="ticker-box" id="stock2" list="sp-500">
+                    <input class="ticker-box" id="stock3" list="sp-500">
+                    <input class="ticker-box" id="stock4" list="sp-500">
+                    
+                    <datalist id="sp-500">
+                        <option value="AAPL">AAPL - Apple Inc.</option>
+                        <option value="MSFT">MSFT - Microsoft Corporation</option>
+                        <option value="AMZN">AMZN - Amazon.com Inc.</option>
+                        <option value="GOOGL">GOOGL - Alphabet Inc. </option>
+                        <option value="BRK.B">BRK.B - Berkshire Hathaway Inc. </option>
+                        <option value="GOOG">GOOG - Alphabet Inc. </option>
+                        <option value="TSLA">TSLA - Tesla Inc</option>
+                        <option value="XOM">XOM - Exxon Mobil Corporation</option>
+                        <option value="UNH">UNH - UnitedHealth Group Incorporated</option>
+                        <option value="JNJ">JNJ - Johnson & Johnson</option>
+                        <option value="NVDA">NVDA - NVIDIA Corporation</option>
+                        <option value="JPM">JPM - JPMorgan Chase & Co.</option>
+                        <option value="V">V - Visa Inc.</option>
+                        <option value="CVX">CVX - Chevron Corporation</option>
+                        <option value="PG">PG - Procter & Gamble Company</option>
+                        <option value="HD">HD - Home Depot Inc.</option>
+                        <option value="MA">MA - Mastercard Incorporated </option>
+                        <option value="LLY">LLY - Eli Lilly and Company</option>
+                        <option value="PFE">PFE - Pfizer Inc.</option>
+                        <option value="ABBV">ABBV - AbbVie Inc.</option>
+                        <option value="META">META - Meta Platforms Inc. </option>
+                        <option value="BAC">BAC - Bank of America Corp</option>
+                        <option value="MRK">MRK - Merck & Co. Inc.</option>
+                        <option value="PEP">PEP - PepsiCo Inc.</option>
+                        <option value="KO">KO - Coca-Cola Company</option>
+                        <option value="COST">COST - Costco Wholesale Corporation</option>
+                        <option value="TMO">TMO - Thermo Fisher Scientific Inc.</option>
+                        <option value="AVGO">AVGO - Broadcom Inc.</option>
+                        <option value="WMT">WMT - Walmart Inc.</option>
+                        <option value="MCD">MCD - McDonald's Corporation</option>
+                        <option value="CSCO">CSCO - Cisco Systems Inc.</option>
+                        <option value="ACN">ACN - Accenture Plc </option>
+                        <option value="ABT">ABT - Abbott Laboratories</option>
+                        <option value="WFC">WFC - Wells Fargo & Company</option>
+                        <option value="DHR">DHR - Danaher Corporation</option>
+                        <option value="DIS">DIS - Walt Disney Company</option>
+                        <option value="COP">COP - ConocoPhillips</option>
+                        <option value="LIN">LIN - Linde plc</option>
+                        <option value="NEE">NEE - NextEra Energy Inc.</option>
+                        <option value="BMY">BMY - Bristol-Myers Squibb Company</option>
+                        <option value="TXN">TXN - Texas Instruments Incorporated</option>
+                        <option value="ADBE">ADBE - Adobe Incorporated</option>
+                        <option value="CRM">CRM - Salesforce Inc.</option>
+                        <option value="VZ">VZ - Verizon Communications Inc.</option>
+                        <option value="AMGN">AMGN - Amgen Inc.</option>
+                        <option value="CMCSA">CMCSA - Comcast Corporation </option>
+                        <option value="PM">PM - Philip Morris International Inc.</option>
+                        <option value="HON">HON - Honeywell International Inc.</option>
+                        <option value="QCOM">QCOM - QUALCOMM Incorporated</option>
+                        <option value="RTX">RTX - Raytheon Technologies Corporation</option>
+                        <option value="NFLX">NFLX - Netflix Inc.</option>
+                        <option value="T">T - AT&T Inc.</option>
+                        <option value="NKE">NKE - NIKE Inc. </option>
+                        <option value="LOW">LOW - Lowe's Companies Inc.</option>
+                        <option value="UPS">UPS - United Parcel Service Inc. </option>
+                        <option value="UNP">UNP - Union Pacific Corporation</option>
+                        <option value="GS">GS - Goldman Sachs Group Inc.</option>
+                        <option value="IBM">IBM - International Business Machines Corporation</option>
+                        <option value="CVS">CVS - CVS Health Corporation</option>
+                        <option value="INTC">INTC - Intel Corporation</option>
+                        <option value="CAT">CAT - Caterpillar Inc.</option>
+                        <option value="AMD">AMD - Advanced Micro Devices Inc.</option>
+                        <option value="MS">MS - Morgan Stanley</option>
+                        <option value="SPGI">SPGI - S&P Global Inc.</option>
+                        <option value="ORCL">ORCL - Oracle Corporation</option>
+                        <option value="SCHW">SCHW - Charles Schwab Corp</option>
+                        <option value="ELV">ELV - Elevance Health Inc.</option>
+                        <option value="INTU">INTU - Intuit Inc.</option>
+                        <option value="DE">DE - Deere & Company</option>
+                        <option value="SBUX">SBUX - Starbucks Corporation</option>
+                        <option value="BLK">BLK - BlackRock Inc.</option>
+                        <option value="MDT">MDT - Medtronic Plc</option>
+                        <option value="LMT">LMT - Lockheed Martin Corporation</option>
+                        <option value="ADP">ADP - Automatic Data Processing Inc.</option>
+                        <option value="GILD">GILD - Gilead Sciences Inc.</option>
+                        <option value="PYPL">PYPL - PayPal Holdings Inc.</option>
+                        <option value="PLD">PLD - Prologis Inc.</option>
+                        <option value="AMT">AMT - American Tower Corporation</option>
+                        <option value="BA">BA - Boeing Company</option>
+                        <option value="AMAT">AMAT - Applied Materials Inc.</option>
+                        <option value="GE">GE - General Electric Company</option>
+                        <option value="C">C - Citigroup Inc.</option>
+                        <option value="ISRG">ISRG - Intuitive Surgical Inc.</option>
+                        <option value="CI">CI - Cigna Corporation</option>
+                        <option value="AXP">AXP - American Express Company</option>
+                        <option value="MDLZ">MDLZ - Mondelez International Inc. </option>
+                        <option value="TJX">TJX - TJX Companies Inc</option>
+                        <option value="TMUS">TMUS - T-Mobile US Inc.</option>
+                        <option value="EOG">EOG - EOG Resources Inc.</option>
+                        <option value="CB">CB - Chubb Limited</option>
+                        <option value="ADI">ADI - Analog Devices Inc.</option>
+                        <option value="NOW">NOW - ServiceNow Inc.</option>
+                        <option value="TGT">TGT - Target Corporation</option>
+                        <option value="MMC">MMC - Marsh & McLennan Companies Inc.</option>
+                        <option value="BKNG">BKNG - Booking Holdings Inc.</option>
+                        <option value="MO">MO - Altria Group Inc</option>
+                        <option value="VRTX">VRTX - Vertex Pharmaceuticals Incorporated</option>
+                        <option value="REGN">REGN - Regeneron Pharmaceuticals Inc.</option>
+                        <option value="SLB">SLB - SLB</option>
+                        <option value="SYK">SYK - Stryker Corporation</option>
+                    </datalist>
+                    <button class="control-button" id="get-data">Pull</button>
+                </div>
+                <div class="portfolio-def" id="port-div">
+                    <h3>Adjust weights for portfolio</h3>
+                    <p>Weights will add up to 1.</p>
+                    <p> No short selling allowed.</p>
+                    <div class="div-range" id="range-d0">
+                        <label class="label-s-name-range" id="label-range-sn0" for="range-s0">s0</label>
+                        <input class="range-stock" id="range-s0" type="range" min="0" step="5" max="100">
+                        <label class="label-s-range" for="range-s0">XX.XX%</label>
+                    </div>
+                    <div class="div-range" id="range-d1">
+                        <label class="label-s-name-range" id="label-range-sn1" for="range-s1">s1</label>
+                        <input class="range-stock" id="range-s1" type="range" min="0" step="5" max="100">
+                        <label class="label-s-range" for="range-s1">XX.XX%</label>
+                    </div>
+                    <div class="div-range" id="range-d2">
+                        <label class="label-s-name-range" id="label-range-sn2" for="range-s2">s2</label>
+                        <input class="range-stock" id="range-s2" type="range" min="0" step="5" max="100">
+                        <label class="label-s-range" for="range-s2">XX.XX%</label>
+                    </div>
+                    <div class="div-range" id="range-d3">
+                        <label class="label-s-name-range" id="label-range-sn3" for="range-s3">s3</label>
+                        <input class="range-stock" id="range-s3" type="range" min="0" step="5" max="100">
+                        <label class="label-s-range" for="range-s3">XX.XX%</label>
+                    </div>
+                    <div class="div-range" id="range-d4">
+                        <label class="label-s-name-range" id="label-range-sn4" for="range-s4">s4</label>
+                        <input class="range-stock" id="range-s4" type="range" min="0" step="5" max="100">
+                        <label class="label-s-range" for="range-s4">XX.XX%</label>
+                    </div>
+                    <button class="control-button" id="port-weight">Estimate</button>
+                </div>
+            </div>
+            <div id="info">
+                <div id="instructions">
+                    <div>
+                        <h1 id="title">Estimate a portfolio's risk and return!</h1>
+                    </div>
+                    <p>Based on monthly data.</p>
+                </div>
+                <div id="results">
+                    <div>
+                        <h3>Portfolio characteristics</h3>
+                        <div id="div-port-dist">
+                            <p id="mu-res"></p>
+                            <p id="si-res"></p>
+                            <p id="sh-res"></p>
+                        </div>    
+                    </div>
+                    <div>
+                        <h3>S&P 500 (SPY) characteristics</h3>
+                        <div id="SP500-dist">
+                            <p id="mu-bm"></p>
+                            <p id="si-bm"></p>
+                            <p id="sh-bm"></p>
+                        </div>    
+                    </div>
+                    <div>
+                        <p>Covariance Matrix:</p>
+                        <div id="coVar">
+                        </div>
+                    </div>
+                    <div id="comments">
+                        <ul>
+                            <li>&mu; is the expected return for this portfolio.</li>
+                            <li>&sigma; is the expected standard deviation for this portfolio.</li>
+                            <li><strong>Investing is paying risk for potential gain.</strong>
+                                <ul>
+                                    <li><a target="_blank" href="https://en.wikipedia.org/wiki/Sharpe_ratio">The Sharpe Ratio</a> represents the ratio of return to risk.</li>
+                                </ul>
+                            </li>
+                            <li>The covariance matrix represents the covariance or variance of each stock with every other stock.</li>
+                            <li><a target="_blank" href="https://en.wikipedia.org/wiki/Modern_portfolio_theory#Criticisms">This model has some problems.</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
