@@ -155,7 +155,6 @@ div.div-range input {
     margin: 10px;
 }
 
-
 div#info {
     display: flex;
     flex-direction: column;
@@ -186,4 +185,8 @@ div#results {
 
 div#results a {
     color: var(--main-bg);
+}
+
+div#chart-div {
+    height: 600px;;
 }

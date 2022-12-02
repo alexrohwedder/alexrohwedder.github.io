@@ -202,6 +202,9 @@ function populateResults(omega, mu, sigma, sharpe) {
 
     const sharpeBM = document.getElementById("sh-bm");
     sharpeBM.innerHTML = 'Sharpe Ratio: ' + calcSharpeRatio(spyderDev, spyderMu).toFixed(4);
+
+    // draw chart
+    fromGoogle(makeChartDataArray(mu, sigma, spyderMu, spyderDev))
 }
 
 function toPercent(number, places = 2) {
@@ -246,4 +249,42 @@ function calcSharpeRatio(sigma, mu) {
 function spyderDataHandler() {
     let spy = new Portfolio(true, [SPY], PORTFOLIO.maxMonths);
     return spy;
+}
+
+// Make the chart:
+
+function normalPDF(val, mu, sigma) {
+    return (1 / (sigma * Math.sqrt(2 * Math.PI))) * Math.E ** ((-1 / 2) * ((val - mu) / sigma) ** 2);
+}
+
+function makeChartDataArray(portMu, portSigma, benchMu, benchSigma) {
+    let minVal = benchMu - 3 * benchSigma;
+    let maxVal = benchSigma + 3 * benchSigma;
+    dataArray = [['Return', 'Portfolio', 'S&P 500']];
+    for (let i = minVal; i < maxVal; i += benchSigma / 10) {
+        row = [toPercent(i), normalPDF(i, portMu, portSigma), normalPDF(i, benchMu, benchSigma)];
+        dataArray.push(row);
+    }
+    return dataArray;
+}
+
+function fromGoogle(arrData) {
+
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+    var data = google.visualization.arrayToDataTable(arrData);
+
+    var options = {
+        title: 'Expected Distribution of Returns',
+        hAxis: {title: 'Percent Return'},
+        vAxis: {minValue: 0, ticks: []},
+        backgroundColor: '#732634',
+        colors: ['#010d00', '#EAEAEA']
+    };
+
+    var chart = new google.visualization.AreaChart(document.getElementById('chart-div'));
+    chart.draw(data, options);
+    }
 }

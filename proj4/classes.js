@@ -201,6 +201,7 @@ class Matrix {
 
 function arrOfZeros(x, y, k=0) {
     // creates an array y long of arrays x long
+    // TODO: Make this a matrix static method
     let arrRes = [];
     for (let j = 0; j < y; j++) {
         let newRow = [];
