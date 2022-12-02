@@ -122,7 +122,6 @@ function addDataToObject() {
 
 // Adapted from zyBooks
 async function requestTicker(ticker) {
-    //TODO: Add catch for bad or missing data
     let apiKey = localStorage.getItem("alphaVantageAPIkey");
     let requestURL = `https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=${ticker}&apikey=${apiKey}`;
     fetch(requestURL)
